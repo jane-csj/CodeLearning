@@ -31,14 +31,11 @@ template<class T>Stack<T>::Stack(){
 }
 template<class T>void Stack<T>::push(T val){
    if(S.top - S.base >= S.stackSize - 1){
-        T *p = new T[(INIT_STACK_SIZE + S.stackSize)];
-        T *tmp = p;
-        while(S.base != S.top){
-            *(++p) = *(++S.base);
-        }
-        
+       T *tmp = new T[(INIT_STACK_SIZE + S.stackSize)]; // 开辟更大的内存
+        copy(S.base, S.base + S.stackSize, tmp);  // 复制原有内存
+        delete []S.base; // 释放原来的内存
         S.base = tmp;
-        S.top = p;
+        S.top = S.base + S.stackSize - 1;
         S.stackSize += INIT_STACK_SIZE;
    }
    *(++S.top) = val;
