@@ -30,7 +30,7 @@ std::vector<int> KMP(char *s, char *t){
         if(s[i] == t[j + 1])j++;
         if(j == m){ans.push_back(i - m + 1); j = ne[j];}
     }
-    return ans; // 匹配失败
+    return ans; 
 }
 int main(){
     scanf("%s%s", s + 1, t + 1);
