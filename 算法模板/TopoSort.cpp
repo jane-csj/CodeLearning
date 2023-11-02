@@ -3,10 +3,10 @@
 #include <stack>
 using namespace std;
 /// <summary>
-/// ��������ʵ��
-/// ���Ϊ0�Ķ��㼴Ϊû��ǰ���Ķ���ɾ�������Լ�����Ϊβ
-/// �Ļ��Ĳ�������ɻ��Ի�ͷ�������ȼ�1��ʵ�֡�
-/// ���Ӷ�ΪO(n + e) n Ϊ��������eΪ��������
+/// 拓扑排序实现
+/// 入度为0的顶点即为没有前驱的顶点删除顶点以及以它为尾
+/// 的弧的操作，则可换以弧头顶点的入度减1来实现。
+/// 复杂度为O(n + e) n 为顶点数，e为弧的数量
 /*
 12 16
 1 2 1
@@ -25,7 +25,7 @@ using namespace std;
 9 12 1
 10 12 1
 11 6 1
-���
+输出
 9 11 6 10 1 12 4 2 3 8 5 7*/
 /// </summary>
 
@@ -35,11 +35,11 @@ struct Graph
 	int vexnum, arcnum;
 	vector<int>indegree;
 	vector<int>G[MAX_VEXTER_NUM];
-	int weight[MAX_VEXTER_NUM][MAX_VEXTER_NUM]; // ����ߵ�Ȩֵ
+	int weight[MAX_VEXTER_NUM][MAX_VEXTER_NUM]; // 储存边的权值
 	Graph() : vexnum(0), arcnum(0){ for (int i = 0; i <= MAX_VEXTER_NUM; i++) indegree.emplace_back(0); }
 };
 
-// ��ʼ�����ж�������
+// 初始化所有顶点的入度
 void FindInDegree(Graph& G) {
 	for (int i = 1; i <= G.vexnum; i++) {
 		for (int v : G.G[i]) {
