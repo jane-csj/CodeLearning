@@ -20,7 +20,7 @@ template<typename T>
 class threadsafe_stack{
 private:
     std::stack<T> data;
-    std::mutex m;
+    mutable std::mutex m;
 public:
     threadsafe_stack(){}
     threadsafe_stack(const threadsafe_stack& other){
