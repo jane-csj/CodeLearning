@@ -13,7 +13,7 @@ template<typename T>
 class threadsafe_stack_waitable{
 private:
     std::stack<T> data;
-    std::mutex m;
+    mutable std::mutex m;
     std::condition_variable cv;
 public:
     threadsafe_stack_waitable(){}
