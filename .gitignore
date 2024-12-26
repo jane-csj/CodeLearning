@@ -360,9 +360,13 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
+<<<<<<< HEAD
 FodyWeavers.xsd
 
 
 # vscode
 .vscode/
 exe/
+=======
+FodyWeavers.xsd
+>>>>>>> c39342ef3185019eef24fddc4a868b63c9aed359
